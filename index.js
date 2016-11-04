@@ -210,7 +210,7 @@ Slideout.prototype._initTouchEvents = function() {
     self._opening = false;
     var offset = eve.touches[0].pageX;
     self._startOffsetX = offset;
-    self._preventOpen = (!self.isOpen() && (self.menu.clientWidth !== 0 || (self._grabWidth && offset > self._grabWidth)));
+    self._preventOpen = (!self._touch || (!self.isOpen() && self.menu.clientWidth !== 0)  || (self._grabWidth && offset > self._grabWidth));
   };
 
   this.panel.addEventListener(touch.start, this._resetTouchFn);
